@@ -1,12 +1,37 @@
+import { ThemeProvider } from "@/src/components/providers/themeProviders";
 import "./globals.css";
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+import localFont from 'next/font/local'
+
+const Font = localFont({
+  src: [
+    {
+      path: '../src/assets/fontes/vazir/Vazir-Light.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../src/assets/fontes/vazir/Vazir.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-my-custom',
+  display: 'swap',
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html
-      lang="en"
-      className= "h-full antialiased"
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="fa" dir="rtl" suppressHydrationWarning className={Font.variable}>
+      <body className="font-sans">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
