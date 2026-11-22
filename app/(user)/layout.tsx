@@ -1,23 +1,13 @@
-import Header from "@/src/components/layouts/header";
+import DashboardShell from "@/src/components/layouts/dashboardShell";
 
-export default function StudentLayout({
+export default function UserLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-dvh bg-background">
-
-      <main className="min-w-0">
-
-        <Header />
-
-        <div className="p-4 sm:p-6 lg:p-8">
-          {children}
-        </div>
-
-      </main>
-
-    </div>
+    <DashboardShell>
+      {children}
+    </DashboardShell>
   );
 }
