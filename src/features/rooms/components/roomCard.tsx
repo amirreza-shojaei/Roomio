@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 import type { Room, RoomView } from "../types/room.types";
-
+import Link from "next/link";
 import { toPersianNumber, getAvailableBeds } from "../utils/room.utils";
 
 interface RoomCardProps {
@@ -301,21 +301,22 @@ export default function RoomCard({ room, view, onDetails }: RoomCardProps) {
         </div>
 
         {/* Details */}
-        <button
-          type="button"
-          onClick={() => onDetails?.(room)}
-          className="
-            mt-5 flex w-full items-center
-            justify-center gap-2 rounded-xl
-            border border-primary/20
-            py-2.5 text-xs font-semibold
-            text-primary transition-colors
-            hover:bg-primary hover:text-white
-          "
-        >
-          مشاهده جزئیات
-          <ChevronLeft size={15} />
-        </button>
+        
+<Link
+  href={`/rooms/${room.id}`}
+  className="
+    mt-5 flex w-full items-center
+    justify-center gap-2 rounded-xl
+    border border-primary/20
+    py-2.5 text-xs font-semibold
+    text-primary transition-colors
+    hover:bg-primary hover:text-white
+  "
+>
+  مشاهده جزئیات
+  <ChevronLeft size={15} />
+</Link>
+
       </div>
     </article>
   );
